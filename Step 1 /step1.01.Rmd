@@ -10,10 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Step 1: Association between User Engagement and Probability of Ephemerality
 
 # Install required packages
-
 install.packages("tidyverse")
 install.packages("dplyr") 
-install.packages("stargazer")
 
 # Load required libraries
 library(tidyverse)
@@ -47,6 +45,3 @@ exp(coef(step_model))
 
 # 95% confidence intervals
 exp(confint(step_model))
-
-# Export as Word document
-stargazer(step_model, type = "html", out = "step1.01.doc")
