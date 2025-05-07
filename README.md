@@ -2,6 +2,7 @@
 
 ## Step 1: Association between User Engagement and Probability of Ephemerality 
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
+
 **Analysis:** Stepwise logistic regression
 **Script:** step1.01.Rmd
 **Description:** To determine whether user engagement metrics were associated with the probability of ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
