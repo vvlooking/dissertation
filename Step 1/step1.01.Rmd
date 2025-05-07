@@ -1,0 +1,47 @@
+title: "step1.01"
+output: word_document
+date: "2025-05-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Step 1: Association between User Engagement and Probability of Ephemerality
+
+# Install required packages
+install.packages("tidyverse")
+install.packages("dplyr") 
+
+# Load required libraries
+library(tidyverse)
+library(MASS)  # for stepAIC
+library(dplyr)
+library(stargazer)
+
+
+# Load the dataset
+data <- read.csv("/Users/valerie/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# Remove rows with any missing values in model variables
+model_data <- data %>%
+  dplyr::select(availability, view_count, like_count, comment_count, share_count) %>%
+  na.omit()
+
+# Full model with all user engagement predictors (i.e., views, likes, comments, shares)
+full_model <- glm(availability ~ view_count + like_count + comment_count + share_count, 
+                  data = model_data, 
+                  family = binomial)
+
+# Stepwise model
+library(MASS)
+step_model <- stepAIC(full_model, direction = "both")
+
+# Results
+summary(step_model)
+
+# Odds ratios
+exp(coef(step_model))
+
+# 95% confidence intervals
+exp(confint(step_model))
