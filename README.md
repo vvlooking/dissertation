@@ -8,6 +8,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 **Script:** step1.01.Rmd
 <br/>
+<br/>
 **Description:** To determine whether user engagement metrics were associated with the probability of ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
 
 ## Step 2: Compare User Engagement between Ephemeral and Non-Ephemeral Content
