@@ -35,8 +35,17 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 
 ## Step 4: Association between Content Characteristics and Probability of Ephemerality
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
-### Stepwise Logistic Regression
-Script:
+<br/>
+<br/>
+**Analysis:** Stepwise logistic regression
+**Script:** step4.01.Rmd
+<br/>
+<br/>
+**Description:** A stepwise logistic regression was conducted to examine whether the presence of six high-level content characteristics (i.e., addiction language, algospeak, signaling, visible scars, explicit NSSI language, and trigger warnings) were associated with the probability that NSSI content would become ephemeral. The stepwise procedure used Akaike Information Criterion (AIC) to iteratively remove variables that did not improve model fit.
+<br/>
+<br/>
+_Note: Double check this analysis - Shouldn't the results be inversed?_
+
 
 ## Step 5: Association between Key Content Characteristics and Probability of Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
