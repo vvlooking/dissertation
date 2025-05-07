@@ -31,6 +31,6 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 Script: 
 
 ## Step 7: Association between User Profile Characteristics and Probability of Ephemerality
-_**RQ 1.2.** What user profile characteristics (i.e., total number of videos, total number of likes across videos, total number of followeres, total number of accounts followed, and verification status) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
+_**RQ 1.2.** What user profile characteristics (i.e., total number of videos, total number of likes across videos, total number of followers, total number of accounts followed, and verification status) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
 ### Stepwise Logistic Regression
 Script: 
