@@ -13,8 +13,15 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 
 ## Step 2: Compare User Engagement between Ephemeral and Non-Ephemeral Content
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
-### Mann-Whitney U
-Script: step2.01.Rmd
+<br/>
+<br/>
+**Analysis:** Mann-Whitney U
+<br/>
+**Script:** step2.01.Rmd
+<br/>
+<br/>
+**Description:** To compare user engagement between ephemeral and non-ephemeral NSSI content, a Mann-Whitney U test was conducted for four user engagement metrics: view count, like count, comment count, and share count. To account for multiple comparisons, a Bonferroni correction was applied to adjust the significance threshold.
+ 
 
 ## Step 3: Characterize Content Characteristics of Ephemeral and Non-Ephemeral Content
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
