@@ -2,6 +2,7 @@
 
 ## Step 1: Association between User Engagement and Probability of Ephemerality 
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the moderation of nonsuicidal self-injury information on TikTok?_
+<br/>
 <br/> 
 **Analysis:** Stepwise logistic regression
 <br/>
