@@ -1,0 +1,43 @@
+---
+title: "step4.01"
+output: html_document
+date: "2025-05-07"
+---
+
+# Install required packages
+install.packages("dplyr") 
+
+
+# Load required libraries
+library(MASS)  # for stepAIC
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# Remove rows with any missing values in model variables
+model_data <- data %>%
+  dplyr::select(availability, addiction_language, algospeak, signaling, 
+                visible_scars, explicit_language, trigger_warning) %>%
+  na.omit()
+  
+names(model_data)
+str(model_data)
+head(model_data)
+
+# Fit logistic regression with all six high-level codes
+full_model <- glm(
+  availability ~ addiction_language + algospeak + signaling + visible_scars + 
+    explicit_language + trigger_warning,
+  data = model_data,
+  family = binomial
+)
+
+# Run stepwise selection using AIC
+step_model <- stepAIC(full_model, direction = "both")
+
+# View final model summary
+summary(step_model)
+
+exp(coef(step_model))  # Odds ratios
+exp(confint(step_model))  # 95% confidence intervals
