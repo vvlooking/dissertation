@@ -1,0 +1,35 @@
+---
+title: "step6.01"
+output: html_document
+date: "2025-05-08"
+---
+# Install required packages
+install.packages("dplyr") 
+
+# Load required libraries
+library(MASS)  # for stepAIC
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+content_vars <- c("addiction_nssi", "explicit_scars", "explicit_self_harm", 
+                  "scars_drawn", "scars_healed", "trigger_warning")
+
+# Start with only main effects
+main_effects <- as.formula(
+  paste("availability ~", paste(content_vars, collapse = " + "))
+)
+
+main_model <- glm(main_effects, data = model_data, family = binomial)
+
+# Use scope to allow 2-way interactions as candidates
+interaction_scope <- as.formula(
+  paste("~ (", paste(content_vars, collapse = " + "), ")^2")
+)
+
+step_model <- stepAIC(main_model, scope = interaction_scope, direction = "both")
+summary(step_model)
+
+exp(coef(step_model))           # Odds ratios
+exp(confint(step_model))        # 95% CI for ORs
