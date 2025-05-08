@@ -72,8 +72,14 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 
 ## Step 6: Association between Interactions of Content Characteristics and Probability of Ephemerality _(to determine if content characteristics operate independently or synergistically)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
-### Stepwise Logistic Regression
-Script: 
+<br/>
+<br/>
+**Analysis:** Stepwise logistic regression
+<br/>
+**Script:** step6.01.Rmd 
+<br/>
+<br/>
+**Description:** To assess whether content characteristics operated independently or synergistically in predicting ephemerality, a stepwise logistic regression was conducted that included all two-way interactions between seven key (child) content codes identified in earlier models. The model began with all main effects and interaction terms and used Akaike Information Criterion (AIC) to iteratively remove non-contributing variables. This approach allowed for the identification of not only direct associations but also whether specific combinations of content features increased or decreased the probability of a video becoming ephemeral.
 
 ## Step 7: Association between User Profile Characteristics and Probability of Ephemerality
 _**RQ 1.2.** What user profile characteristics (i.e., total number of videos, total number of likes across videos, total number of followers, total number of accounts followed, and verification status) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
