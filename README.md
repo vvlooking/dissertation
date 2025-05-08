@@ -46,6 +46,17 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 <br/>
 _Note: Double check this analysis - Shouldn't the results be inversed?_
+<br/>
+<br/>
+**Analysis:** Stepwise logistic regression
+<br/>
+**Script:** step4.02.Rmd
+<br/>
+<br/>
+**Description:** To determine whether specific content elements were associated with the probability NSSI content becoming ephemeral, a stepwise logistic regression was conducted using 24 child content characteristics as predictors. The dependent variable was ephemerality. The model selection process used Akaike Information Criterion (AIC) to iteratively retain predictors that improved model fit.
+<br/>
+<br/>
+_Note: Double check this analysis - Some of the results seem like they should be inversed._
 
 
 ## Step 5: Association between Key Content Characteristics and Probability of Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
