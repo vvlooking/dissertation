@@ -61,8 +61,14 @@ _Note: Double check this analysis - Some of the results seem like they should be
 
 ## Step 5: Association between Key Content Characteristics and Probability of Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
-### Stepwise Logistic Regression
-Script:
+<br/>
+<br/>
+**Analysis:** Stepwise logistic regression
+<br/>
+**Script:** step5.01.Rmd
+<br/>
+<br/>
+**Description:** To assess whether user engagement confounded the relationship between content characteristics and video ephemerality, a stepwise logistic regression was conducted using seven content-related predictors alongside four user engagement metrics (i.e., view count, like count, comment count, and share count). The model selection process used Akaike Information Criterion (AIC) to iteratively retain only the predictors that improved model fit, allowing for an assessment of whether the previously observed content-based associations with ephemerality remained significant when user engagement was taken into account.
 
 ## Step 6: Association between Interactions of Content Characteristics and Probability of Ephemerality _(to determine if content characteristics operate independently or synergistically)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
