@@ -1,0 +1,47 @@
+---
+title: "step5.01"
+output: html_document
+date: "2025-05-08"
+---
+# Install required packages
+install.packages("dplyr") 
+
+# Load required libraries
+library(MASS)  # for stepAIC
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# Define key variables
+content_vars <- c("addiction_nssi", "explicit_scars", "explicit_self_harm", 
+                  "scars_drawn", "scars_healed", "signaling_abstract", "trigger_warning")
+
+engagement_vars <- c("view_count", "like_count", "comment_count", "share_count")
+
+all_vars <- c("availability", content_vars, engagement_vars)
+
+model_data <- data[, all_vars]
+model_data <- na.omit(model_data)
+model_data$availability <- as.factor(model_data$availability)
+
+# Build the full formula
+full_formula <- as.formula(
+  paste("availability ~", paste(c(content_vars, engagement_vars), collapse = " + "))
+)
+
+# Fit full logistic regression model
+full_model <- glm(full_formula, data = model_data, family = binomial)
+
+# Run stepwise model selection
+library(MASS)
+step_model <- stepAIC(full_model, direction = "both")
+
+# View final model
+summary(step_model)
+
+# Odds ratios
+exp(coef(step_model))
+
+# Confidence intervals for ORs
+exp(confint(step_model))
