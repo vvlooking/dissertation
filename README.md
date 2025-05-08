@@ -83,5 +83,11 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 
 ## Step 7: Association between User Profile Characteristics and Probability of Ephemerality
 _**RQ 1.2.** What user profile characteristics (i.e., total number of videos, total number of likes across videos, total number of followers, total number of accounts followed, and verification status) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
-### Stepwise Logistic Regression
-Script: 
+<br/>
+<br/>
+**Analysis:** Stepwise logistic regression
+<br/>
+**Script:** step7.01.Rmd
+<br/>
+<br/>
+**Description:** To determine whether user profile characteristics were associated with the probability of ephemerality, a stepwise logistic regression was conducted. Predictor variables included total likes, total video count, follower count, following count, and verification status. Due to skewed distributions, all count-based variables were log-transformed prior to modeling. Verification status was excluded during model selection, and the final model retained four log-transformed user profile predictors.
