@@ -1,0 +1,48 @@
+---
+title: "step4.02"
+output: html_document
+date: "2025-05-07"
+---
+# Install required packages
+install.packages("dplyr") 
+install.packages("car")
+
+# Load required libraries
+library(MASS)  # for stepAIC
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+names(data)
+
+child_code_vars <- c(
+  "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "algospeak_misspelling", "algospeak_characters", "algospeak_term",
+  "explicit_cut", "explicit_instrument", "explicit_scars", "explicit_self_harm",
+  "scars_bandaged", "scars_drawn", "scars_fresh", "scars_healed",
+  "signaling_abstract", "signaling_blood", "signaling_body", 
+  "signaling_clothing", "signaling_imagery", "signaling_lyric", 
+  "signaling_summer", "trigger_warning"
+)
+
+model_data <- data[, c("availability", child_code_vars)]
+model_data <- na.omit(model_data)
+model_data$availability <- as.factor(model_data$availability)
+
+# Build formula dynamically
+formula <- as.formula(paste("availability ~", paste(child_code_vars, collapse = " + ")))
+
+# Fit full logistic regression model
+full_model <- glm(formula, data = model_data, family = binomial)
+
+# Stepwise selection
+library(MASS)
+step_model <- stepAIC(full_model, direction = "both")
+
+# Summary of final model
+summary(step_model)
+
+exp(coef(step_model))             # Odds ratios
+exp(confint(step_model))          # 95% confidence intervals
