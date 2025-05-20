@@ -1,0 +1,106 @@
+---
+title: "step1.02"
+output: html_document
+date: "2025-05-20"
+---
+
+# Description Analysis to Understand and Assess Data before Conducting Correlation Analyses
+
+# Install required libraries
+install.packages("dplyr")
+install.packages("tidyverse")
+
+# Load libraries
+library(dplyr)
+library(tidyverse)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# View summary of missing values per column
+colSums(is.na(data))
+
+# Remove rows with any missing variables
+cleaned_data <- na.omit(data)
+dim(cleaned_data)  # Returns number of rows and columns
+summary(cleaned_data)
+
+# Basic descriptive stats: mean and standard deviation
+engagement_vars <- c("like_count", "view_count", "share_count", "comment_count")
+
+# Calculate mean and SD for each engagement variable
+engagement_summary <- data.frame(
+  Variable = engagement_vars,
+  Mean = sapply(cleaned_data[engagement_vars], mean, na.rm = TRUE),
+  SD = sapply(cleaned_data[engagement_vars], sd, na.rm = TRUE)
+)
+
+print(engagement_summary)
+
+# Descriptive statistics of content characteristics (n + %)
+# List of binary content characteristic columns
+content_vars <- c(
+  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup", 
+  "algospeak_misspelling", "algospeak_characters", "algospeak_term",
+  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars", 
+  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn", 
+  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", 
+  "signaling_blood", "signaling_body", "signaling_clothing", 
+  "signaling_imagery", "signaling_lyric", "signaling_summer", "trigger_warning"
+)
+
+# Create frequency table
+content_summary <- data.frame(
+  Variable = content_vars,
+  Count = sapply(cleaned_data[content_vars], function(x) sum(x == 1, na.rm = TRUE)),
+  Percent = sapply(cleaned_data[content_vars], function(x) round(mean(x == 1, na.rm = TRUE) * 100, 1))
+)
+
+# Print the table
+print(content_summary)
+
+# Descriptive analysis of profile characteristics
+
+# Define the variables
+profile_vars <- c("profile.likes_count", "profile.video_count", 
+                  "profile.follower_count", "profile.following_count")
+
+# Create a summary table using only the numeric data
+profile_summary <- data.frame(
+  Variable = profile_vars,
+  Mean = sapply(profile_vars, function(x) mean(cleaned_data[[x]], na.rm = TRUE)),
+  SD = sapply(profile_vars, function(x) sd(cleaned_data[[x]], na.rm = TRUE)),
+  Min = sapply(profile_vars, function(x) min(cleaned_data[[x]], na.rm = TRUE)),
+  Max = sapply(profile_vars, function(x) max(cleaned_data[[x]], na.rm = TRUE)),
+  Median = sapply(profile_vars, function(x) median(cleaned_data[[x]], na.rm = TRUE))
+)
+
+# Round the values for easier reading
+profile_summary <- round(profile_summary, 2)
+
+# Print the table
+print(profile_summary)
+
+# Descriptive analysis of ephermerality
+
+# Count the number of each availability status
+availability_counts <- table(cleaned_data$availability)
+
+# Calculate the percentages
+availability_percent <- prop.table(availability_counts) * 100
+
+# Combine into a clean summary table
+availability_summary <- data.frame(
+  Availability = names(availability_counts),
+  Count = as.vector(availability_counts),
+  Percent = round(as.vector(availability_percent), 1)
+)
+
+# Label the availability column meaningfully
+availability_summary$Availability <- ifelse(
+  availability_summary$Availability == "1", "Unavailable (Ephemeral)", "Available (Non-Ephemeral)"
+)
+
+# Print the table
+print(availability_summary)
