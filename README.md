@@ -1,4 +1,15 @@
 # Dissertation Quantitative Data Analysis
+## Step 1: Descriptive Analysis
+<br/>
+<br/>
+**Analysis:** Descriptive statistics
+<br/>
+**Script:** step1.02.Rmd (Folder: Step 1)
+<br/>
+<br/>
+**Description:** Before conducting inferential statistical analyses, I performed descriptive analysis to gain an initial understanding of the dataset and ensure data quality. This step allowed me to summarize the distributions and relationships among key variables, as well as to inform subsequent regression modeling.
+<br/>
+<br/> 
 
 ## Step 1: Association between User Engagement and Probability of Ephemerality 
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
