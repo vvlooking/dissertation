@@ -1,7 +1,5 @@
 # Dissertation Quantitative Data Analysis
 ## Step 1: Descriptive Analysis
-<br/>
-<br/>
 **Analysis:** Descriptive statistics
 <br/>
 **Script:** step1.02.Rmd (Folder: Step 1)
