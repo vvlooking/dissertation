@@ -1,0 +1,115 @@
+---
+title: "step4.02.Rmd"
+output: html_document
+date: "2025-05-21"
+---
+# Association between Content Characteristics and Ephemerality
+
+# Chi-Square
+
+# Install required libraries
+install.packages("dplyr")
+install.packages("tidyverse")
+
+# Load libraries
+library(dplyr)
+library(tidyverse)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# View summary of missing values per column
+colSums(is.na(data))
+
+# Remove rows with any missing variables
+cleaned_data <- na.omit(data)
+dim(cleaned_data)  # Returns number of rows and columns
+summary(cleaned_data)
+
+# Step 1: List all your binary-coded content variables
+content_vars <- c(
+  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "algospeak_misspelling", "algospeak_characters", "algospeak_term",
+  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars",
+  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn",
+  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", "signaling_blood",
+  "signaling_body", "signaling_clothing", "signaling_imagery", "signaling_lyric",
+  "signaling_summer", "trigger_warning"
+)
+
+# Initialize results
+chi_summary <- data.frame(
+  Variable = character(),
+  Ephemeral = character(),
+  Non_Ephemeral = character(),
+  Chi_Square = numeric(),
+  p_value = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Loop through variables
+for (var in content_vars) {
+  tbl <- table(cleaned_data[[var]], cleaned_data$availability)
+  test <- chisq.test(tbl)
+
+  # Get counts and percents
+  epi_n <- tbl["1", "1"]
+  non_epi_n <- tbl["1", "0"]
+  epi_total <- sum(cleaned_data$availability == 1)
+  non_epi_total <- sum(cleaned_data$availability == 0)
+  epi_pct <- round((epi_n / epi_total) * 100, 1)
+  non_epi_pct <- round((non_epi_n / non_epi_total) * 100, 1)
+
+  # Add row
+  chi_summary <- rbind(chi_summary, data.frame(
+    Variable = var,
+    Ephemeral = paste0(epi_n, " (", epi_pct, "%)"),
+    Non_Ephemeral = paste0(non_epi_n, " (", non_epi_pct, "%)"),
+    Chi_Square = round(test$statistic, 3),
+    p_value = round(test$p.value, 4)
+  ))
+}
+
+# View table
+print(chi_summary)
+
+# Stepwise Logistic Regression
+
+# Load required library
+library(MASS)
+
+# List of predictors (adjust if you're using child codes)
+content_vars <- c(
+  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "algospeak_misspelling", "algospeak_characters", "algospeak_term",
+  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars",
+  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn",
+  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", "signaling_blood",
+  "signaling_body", "signaling_clothing", "signaling_imagery", "signaling_lyric",
+  "signaling_summer", "trigger_warning"
+)
+
+# Subset the data and remove rows with missing values
+model_data <- cleaned_data[, c("availability", content_vars)]
+model_data <- na.omit(model_data)
+model_data$availability <- as.factor(model_data$availability)
+
+# Build logistic regression formula
+content_formula <- as.formula(
+  paste("availability ~", paste(content_vars, collapse = " + "))
+)
+
+# Fit the full model
+full_model <- glm(content_formula, data = model_data, family = binomial)
+
+# Run stepwise logistic regression
+step_model <- stepAIC(full_model, direction = "both")
+
+# View summary of final model
+summary(step_model)
+
+# Odds ratios and confidence intervals
+exp(coef(step_model))
+exp(confint(step_model))
