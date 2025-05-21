@@ -36,6 +36,11 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 <br/>
 **Description:** A content analysis of both ephemeral and non-ephemeral videos was conducted to characterize the content characteristics (i.e., a video’s user engagement metrics and audio, visual, and linguistic elements) of each. Analysis resulted in six high-level categories: addiction language, algospeak, signaling, visible scars, explicit NSSI language, and the presence of trigger warnings. A total of 24 child codes was organized under these categories: three for addiction language, six for algospeak, four for explicit language, four for visible scars, and seven for signaling. Each characteristic was coded as present (1) or absent (0) in Excel.
+<br/>
+<br/>
+**Analysis:** Descriptive analysis
+<br/>
+**Script:** step3.02.Rmd
 
 
 ## Step 4: Association between Content Characteristics and Probability of Ephemerality
