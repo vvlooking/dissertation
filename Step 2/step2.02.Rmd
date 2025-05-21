@@ -1,0 +1,97 @@
+# Association between User Engagement and Ephemerality 
+
+# Install required libraries
+install.packages("dplyr")
+install.packages("tidyverse")
+
+# Load libraries
+library(dplyr)
+library(tidyverse)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# View summary of missing values per column
+colSums(is.na(data))
+
+# Remove rows with any missing variables
+cleaned_data <- na.omit(data)
+dim(cleaned_data)  # Returns number of rows and columns
+summary(cleaned_data)
+
+# Check for normality
+qqnorm(cleaned_data$like_count) 
+qqline(cleaned_data$like_count, col = "red")
+
+qqnorm(cleaned_data$view_count) 
+qqline(cleaned_data$view_count, col = "red")
+
+qqnorm(cleaned_data$share_count) 
+qqline(cleaned_data$share_count, col = "red")
+
+qqnorm(cleaned_data$comment_count) 
+qqline(cleaned_data$comment_count, col = "red")
+
+
+# Define engagement variables
+engagement_vars <- c("like_count", "view_count", "comment_count", "share_count")
+
+# Step 1: Calculate mean ± SD per group (availability = 0 or 1)
+summary_stats <- cleaned_data %>%
+  group_by(availability) %>%
+  summarise(across(all_of(engagement_vars),
+                   list(mean = ~ mean(.x, na.rm = TRUE),
+                        sd = ~ sd(.x, na.rm = TRUE)), .names = "{.col}_{.fn}")) %>%
+  mutate(across(ends_with("mean"), round, 1),
+         across(ends_with("sd"), round, 1))
+
+# Step 2: Combine mean and SD into single "mean ± SD" strings
+combine_mean_sd <- function(mean, sd) {
+  paste0(mean, " ± ", sd)
+}
+
+formatted_stats <- data.frame(
+  Variable = engagement_vars,
+  Ephemeral = mapply(combine_mean_sd,
+                     summary_stats[2, paste0(engagement_vars, "_mean")],
+                     summary_stats[2, paste0(engagement_vars, "_sd")]),
+  Non_Ephemeral = mapply(combine_mean_sd,
+                         summary_stats[1, paste0(engagement_vars, "_mean")],
+                         summary_stats[1, paste0(engagement_vars, "_sd")])
+)
+
+# Step 3: Run Mann–Whitney U test for each variable
+raw_p <- sapply(engagement_vars, function(var) {
+  wilcox.test(cleaned_data[[var]] ~ cleaned_data$availability)$p.value
+})
+
+bonferroni_p <- p.adjust(raw_p, method = "bonferroni")
+
+# Step 4: Combine all results
+final_table <- cbind(
+  formatted_stats,
+  `Raw p-value` = round(raw_p, 5),
+  `Bonferroni p` = round(bonferroni_p, 5)
+)
+
+print(final_table)
+
+# Following Mann-Whitney U, conduct a stepwise logistic regression analysis
+
+# Full model with all user engagement predictors (i.e., views, likes, comments, shares)
+full_model <- glm(availability ~ view_count + like_count + comment_count + share_count, 
+                  data = cleaned_data, 
+                  family = binomial)
+
+# Stepwise model
+library(MASS)
+step_model <- stepAIC(full_model, direction = "both")
+
+# Results
+summary(step_model)
+
+# Odds ratios
+exp(coef(step_model))
+
+# 95% confidence intervals
+exp(confint(step_model))
