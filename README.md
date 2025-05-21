@@ -8,28 +8,24 @@
 **Description:** Before conducting inferential statistical analyses, I performed descriptive analysis to gain an initial understanding of the dataset and ensure data quality. This step allowed me to summarize the distributions and relationships among key variables, as well as to inform subsequent regression modeling.
 <br/>
 <br/> 
-
-## Step 1: Association between User Engagement and Probability of Ephemerality 
-_**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
-<br/>
-<br/> 
-**Analysis:** Stepwise logistic regression
-<br/>
-**Script:** step1.01.Rmd
-<br/>
-<br/>
-**Description:** To determine whether user engagement metrics were associated with the probability of ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
-
 ## Step 2: Compare User Engagement between Ephemeral and Non-Ephemeral Content
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
 <br/>
 **Analysis:** Mann-Whitney U
 <br/>
-**Script:** step2.01.Rmd
+**Script:** step2.02.Rmd
 <br/>
 <br/>
 **Description:** To compare user engagement between ephemeral and non-ephemeral NSSI content, a Mann-Whitney U test was conducted for four user engagement metrics: view count, like count, comment count, and share count. To account for multiple comparisons, a Bonferroni correction was applied to adjust the significance threshold.
+<br/>
+<br/> 
+**Analysis:** Stepwise logistic regression
+<br/>
+**Script:** step2.02.Rmd
+<br/>
+<br/>
+**Description:** To determine whether user engagement metrics were associated with ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
  
 
 ## Step 3: Characterize Content Characteristics of Ephemeral and Non-Ephemeral Content
