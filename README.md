@@ -47,28 +47,22 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
 <br/>
-**Analysis:** Stepwise logistic regression
+**Analysis:** Chi-Square
 <br/>
-**Script:** step4.01.Rmd
-<br/>
-<br/>
-**Description:** A stepwise logistic regression was conducted to examine whether the presence of six high-level content characteristics (i.e., addiction language, algospeak, signaling, visible scars, explicit NSSI language, and trigger warnings) were associated with the probability that NSSI content would become ephemeral. The stepwise procedure used Akaike Information Criterion (AIC) to iteratively remove variables that did not improve model fit.
+**Script:** step4.03.Rmd
 <br/>
 <br/>
-_Note: Double check this analysis - Shouldn't the results be inversed?_
+**Description:** To examine the relationship between specific content characteristics and ephemerality, we conducted a series of chi-square tests of independence (Table 6). For each variable, we constructed 2x2 contingency tables comparing the frequency of the characteristic across ephemeral and non-ephemeral videos. We calculated Chi-square statistics and associated p-values to assess whether observed distributions differed significantly from what would be expected by chance. We also computed descriptive frequencies (counts and percentages) of each characteristic within both groups to contextualize the statistical results.
 <br/>
 <br/>
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step4.02.Rmd
+**Script:** step4.03.Rmd
 <br/>
 <br/>
-**Description:** To determine whether specific content elements were associated with the probability NSSI content becoming ephemeral, a stepwise logistic regression was conducted using 24 child content characteristics as predictors. The dependent variable was ephemerality. The model selection process used Akaike Information Criterion (AIC) to iteratively retain predictors that improved model fit.
+**Description:** Following the Chi-square tests, we conducted a stepwise logistic regression analysis (Table 7) to identify which content characteristics were most strongly associated with ephemerality.  The dependent variable was ephemerality, while independent variables included binary indicators of specific content characteristics derived from our codebook. We used a bidirectional stepwise selection procedure based on Akaike Information Criterion (AIC) to iteratively add or remove predictors, optimizing model fit. The final model included only those variables that contributed significantly to explaining variation in ephemerality. For each retained predictor, we reported estimated coefficients, standard errors, z-values, p-values, odds ratios, and 95% confidence intervals.
 <br/>
 <br/>
-_Note: Double check this analysis - Some of the results seem like they should be inversed._
-
-
 ## Step 5: Association between Key Content Characteristics and Probability of Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
