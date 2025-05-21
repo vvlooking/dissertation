@@ -1,0 +1,56 @@
+---
+title: "step3.02.Rmd"
+output: html_document
+date: "2025-05-21"
+---
+# Descriptive Analysis of Content Characteristics
+
+# Install required libraries
+install.packages("dplyr")
+install.packages("tidyverse")
+
+# Load libraries
+library(dplyr)
+library(tidyverse)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+# View summary of missing values per column
+colSums(is.na(data))
+
+# Remove rows with any missing variables
+cleaned_data <- na.omit(data)
+dim(cleaned_data)  # Returns number of rows and columns
+summary(cleaned_data)
+
+# Step 1: List all your binary-coded content variables
+content_vars <- c(
+  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "algospeak_misspelling", "algospeak_characters", "algospeak_term",
+  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars",
+  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn",
+  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", "signaling_blood",
+  "signaling_body", "signaling_clothing", "signaling_imagery", "signaling_lyric",
+  "signaling_summer", "trigger_warning"
+)
+
+# Total number of videos
+n_total <- nrow(cleaned_data)
+n_ephemeral <- sum(cleaned_data$availability == 1)
+n_non_ephemeral <- sum(cleaned_data$availability == 0)
+
+# Generate full table
+group_summary <- data.frame(
+  Variable = content_vars,
+  Total_Count = sapply(cleaned_data[content_vars], function(x) sum(x == 1, na.rm = TRUE)),
+  Total_Percent = sapply(cleaned_data[content_vars], function(x) round(mean(x == 1, na.rm = TRUE) * 100, 1)),
+  Ephemeral_Count = sapply(cleaned_data[content_vars], function(x) sum(x[cleaned_data$availability == 1] == 1, na.rm = TRUE)),
+  Ephemeral_Percent = sapply(cleaned_data[content_vars], function(x) round(mean(x[cleaned_data$availability == 1] == 1, na.rm = TRUE) * 100, 1)),
+  Non_Ephemeral_Count = sapply(cleaned_data[content_vars], function(x) sum(x[cleaned_data$availability == 0] == 1, na.rm = TRUE)),
+  Non_Ephemeral_Percent = sapply(cleaned_data[content_vars], function(x) round(mean(x[cleaned_data$availability == 0] == 1, na.rm = TRUE) * 100, 1))
+)
+
+# View the table
+print(group_summary)
