@@ -14,7 +14,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 **Analysis:** Mann-Whitney U
 <br/>
-**Script:** step2.02.Rmd
+**Script:** step2.02.Rmd (Folder 2)
 <br/>
 <br/>
 **Description:** To compare user engagement between ephemeral and non-ephemeral NSSI content, a Mann-Whitney U test was conducted for four user engagement metrics: view count, like count, comment count, and share count. To account for multiple comparisons, a Bonferroni correction was applied to adjust the significance threshold.
@@ -22,7 +22,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/> 
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step2.02.Rmd
+**Script:** step2.02.Rmd (Folder 2)
 <br/>
 <br/>
 **Description:** To determine whether user engagement metrics were associated with ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
