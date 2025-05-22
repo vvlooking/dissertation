@@ -1,0 +1,69 @@
+---
+title: "step7.02.Rmd"
+output: html_document
+date: "2025-05-22"
+---
+# Install required packages
+install.packages("dplyr") 
+
+# Load required libraries
+library(MASS)  # for stepAIC
+library(dplyr)
+
+# Load the dataset
+data <- read.csv("/Users/valerievera/Library/CloudStorage/OneDrive-UniversityofSouthCarolina/Documents/PhD Program/Dissertation/Dissertation - Phase 1/R Data Analysis/Dissertation/dissertation_data.csv")
+
+names(data)
+
+# View summary of missing values per column
+colSums(is.na(data))
+
+# Remove rows with any missing variables
+cleaned_data <- na.omit(data)
+dim(cleaned_data)  # Returns number of rows and columns
+summary(cleaned_data)
+
+# List of predictor variables
+profile_vars <- c("profile.likes_count", "profile.video_count", "profile.follower_count", "profile.following_count", "profile.is_verified")
+
+# Subset and clean data
+model_data <- data[, c("availability", profile_vars)]
+model_data <- na.omit(model_data)
+model_data$availability <- as.factor(model_data$availability)
+
+# Log-transform skewed count variables (+1 to avoid log(0))
+model_data <- model_data %>%
+  mutate(
+    log_likes = log(profile.likes_count + 1),
+    log_videos = log(profile.video_count + 1),
+    log_followers = log(profile.follower_count + 1),
+    log_following = log(profile.following_count + 1)
+  )
+
+# Redefine predictor variables using log-transformed versions
+log_profile_vars <- c("log_likes", "log_videos", "log_followers", "log_following", "profile.is_verified")
+
+# Build formula
+profile_formula <- as.formula(
+  paste("availability ~", paste(log_profile_vars, collapse = " + "))
+)
+
+# Fit full logistic regression model
+full_model <- glm(profile_formula, data = model_data, family = binomial)
+
+# Stepwise selection using AIC
+step_model <- stepAIC(full_model, direction = "both")
+
+# View final model summary
+summary(step_model)
+
+# Get odds ratios and confidence intervals
+exp(coef(step_model))         # Odds Ratios
+exp(confint(step_model))      # 95% CI for Odds Ratios
+
+
+# Get unique usernames from cleaned dataset
+unique_usernames <- unique(cleaned_data$username)
+
+# Count of unique users
+length(unique_usernames)
