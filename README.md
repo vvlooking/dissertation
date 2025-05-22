@@ -81,7 +81,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step6.01.Rmd 
+**Script:** step6.02.Rmd 
 <br/>
 <br/>
 **Description:** To assess whether content characteristics operated independently or synergistically in predicting ephemerality, a stepwise logistic regression was conducted that included all two-way interactions between seven key (child) content codes identified in earlier models. The model began with all main effects and interaction terms and used Akaike Information Criterion (AIC) to iteratively remove non-contributing variables. This approach allowed for the identification of not only direct associations but also whether specific combinations of content features increased or decreased the probability of a video becoming ephemeral.
