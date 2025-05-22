@@ -28,12 +28,12 @@ summary(cleaned_data)
 
 # Step 1: List all your binary-coded content variables
 content_vars <- c(
-  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
-  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
   "algospeak_misspelling", "algospeak_characters", "algospeak_term",
-  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars",
-  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn",
-  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", "signaling_blood",
+  "explicit_cut", "explicit_instrument", "explicit_scars",
+  "explicit_self_harm", "scars_bandaged", "scars_drawn",
+  "scars_fresh", "scars_healed", "signaling_abstract", "signaling_blood",
   "signaling_body", "signaling_clothing", "signaling_imagery", "signaling_lyric",
   "signaling_summer", "trigger_warning"
 )
@@ -79,14 +79,14 @@ print(chi_summary)
 # Load required library
 library(MASS)
 
-# List of predictors (adjust if you're using child codes)
+# List of predictors
 content_vars <- c(
-  "addiction_language", "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
-  "algospeak", "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
+  "addiction_nssi", "addiction_relapsing", "addiction_sobriety",
+  "algospeak_abbreviation", "algospeak_symbols", "algospeak_coverup",
   "algospeak_misspelling", "algospeak_characters", "algospeak_term",
-  "explicit_language", "explicit_cut", "explicit_instrument", "explicit_scars",
-  "explicit_self_harm", "visible_scars", "scars_bandaged", "scars_drawn",
-  "scars_fresh", "scars_healed", "signaling", "signaling_abstract", "signaling_blood",
+  "explicit_cut", "explicit_instrument", "explicit_scars",
+  "explicit_self_harm", "scars_bandaged", "scars_drawn",
+  "scars_fresh", "scars_healed", "signaling_abstract", "signaling_blood",
   "signaling_body", "signaling_clothing", "signaling_imagery", "signaling_lyric",
   "signaling_summer", "trigger_warning"
 )
@@ -95,6 +95,7 @@ content_vars <- c(
 model_data <- cleaned_data[, c("availability", content_vars)]
 model_data <- na.omit(model_data)
 model_data$availability <- as.factor(model_data$availability)
+
 
 # Build logistic regression formula
 content_formula <- as.formula(
@@ -109,6 +110,10 @@ step_model <- stepAIC(full_model, direction = "both")
 
 # View summary of final model
 summary(step_model)
+
+# Odds ratios and confidence intervals
+exp(coef(step_model))
+exp(confint(step_model))
 
 # Odds ratios and confidence intervals
 exp(coef(step_model))
