@@ -2,7 +2,7 @@
 ## Step 1: Descriptive Analysis
 **Analysis:** Descriptive statistics
 <br/>
-**Script:** step1.02.Rmd (Folder: Step 1)
+**Script:** step1.02.Rmd
 <br/>
 <br/>
 **Description:** Before conducting inferential statistical analyses, I performed descriptive analysis to gain an initial understanding of the dataset and ensure data quality. This step allowed me to summarize the distributions and relationships among key variables, as well as to inform subsequent regression modeling.
@@ -14,7 +14,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 **Analysis:** Mann-Whitney U
 <br/>
-**Script:** step2.02.Rmd (Folder 2)
+**Script:** step2.02.Rmd
 <br/>
 <br/>
 **Description:** To compare user engagement between ephemeral and non-ephemeral NSSI content, a Mann-Whitney U test was conducted for four user engagement metrics: view count, like count, comment count, and share count. To account for multiple comparisons, a Bonferroni correction was applied to adjust the significance threshold.
@@ -22,7 +22,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/> 
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step2.02.Rmd (Folder 2)
+**Script:** step2.02.Rmd
 <br/>
 <br/>
 **Description:** To determine whether user engagement metrics were associated with ephemerality of NSSI content on TikTok, a stepwise logistic regression was conducted using view count, like count, comment count, and share count as predictors of ephemerality. 
@@ -43,7 +43,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Script:** step3.02.Rmd
 
 
-## Step 4: Association between Content Characteristics and Probability of Ephemerality
+## Step 4: Association between Content Characteristics and Ephemerality
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
 <br/>
@@ -63,7 +63,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Description:** Following the Chi-square tests, we conducted a stepwise logistic regression analysis (Table 7) to identify which content characteristics were most strongly associated with ephemerality.  The dependent variable was ephemerality, while independent variables included binary indicators of specific content characteristics derived from our codebook. We used a bidirectional stepwise selection procedure based on Akaike Information Criterion (AIC) to iteratively add or remove predictors, optimizing model fit. The final model included only those variables that contributed significantly to explaining variation in ephemerality. For each retained predictor, we reported estimated coefficients, standard errors, z-values, p-values, odds ratios, and 95% confidence intervals.
 <br/>
 <br/>
-## Step 5: Association between Key Content Characteristics and Probability of Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
+## Step 5: Association between Key Content Characteristics and Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
 <br/>
@@ -75,7 +75,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Description:** To evaluate whether user engagement confounded the relationship between content characteristics and ephemerality, we conducted a stepwise logistic regression that included both sets of predictors. We entered content characteristics that we found to be significantly associated with ephemerality in previous analyses into the stepwise logistic regression model alongside four user engagement metrics: views, likes, comments, and shares. Using Akaike Information Criterion (AIC), the stepwise procedure iteratively selected the combination of predictors that best explained the outcome while minimizing model complexity. This approach allowed us to assess whether the associations between content characteristics and ephemerality persisted after adjusting for user engagement levels.
 
 
-## Step 6: Association between Interactions of Content Characteristics and Probability of Ephemerality _(to determine if content characteristics operate independently or synergistically)_
+## Step 6: Association between Interactions of Content Characteristics and Ephemerality _(to determine if content characteristics operate independently or synergistically)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
 <br/>
 <br/>
