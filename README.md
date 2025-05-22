@@ -52,7 +52,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Script:** step4.03.Rmd
 <br/>
 <br/>
-**Description:** To examine the relationship between specific content characteristics and ephemerality, we conducted a series of chi-square tests of independence (Table 6). For each variable, we constructed 2x2 contingency tables comparing the frequency of the characteristic across ephemeral and non-ephemeral videos. We calculated Chi-square statistics and associated p-values to assess whether observed distributions differed significantly from what would be expected by chance. We also computed descriptive frequencies (counts and percentages) of each characteristic within both groups to contextualize the statistical results.
+**Description:** To examine the relationship between specific content characteristics and ephemerality, a series of chi-square tests of independence was conducted. For each variable, 2x2 contingency tables comparing the frequency of the characteristic across ephemeral and non-ephemeral videos were constructed. Chi-square statistics and associated p-values were calculated to assess whether observed distributions differed significantly from what would be expected by chance. Descriptive frequencies (counts and percentages) of each characteristic within both groups were calculated to contextualize the statistical results.
 <br/>
 <br/>
 **Analysis:** Stepwise logistic regression
@@ -60,7 +60,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Script:** step4.03.Rmd
 <br/>
 <br/>
-**Description:** Following the Chi-square tests, we conducted a stepwise logistic regression analysis (Table 7) to identify which content characteristics were most strongly associated with ephemerality.  The dependent variable was ephemerality, while independent variables included binary indicators of specific content characteristics derived from our codebook. We used a bidirectional stepwise selection procedure based on Akaike Information Criterion (AIC) to iteratively add or remove predictors, optimizing model fit. The final model included only those variables that contributed significantly to explaining variation in ephemerality. For each retained predictor, we reported estimated coefficients, standard errors, z-values, p-values, odds ratios, and 95% confidence intervals.
+**Description:** Following the Chi-square tests, a stepwise logistic regression analysis was conducted to identify which content characteristics were most strongly associated with ephemerality.  The dependent variable was ephemerality, while independent variables included binary indicators of specific content characteristics derived from our codebook. A bidirectional stepwise selection procedure based on Akaike Information Criterion (AIC) was selected to iteratively add or remove predictors, optimizing model fit. The final model included only those variables that contributed significantly to explaining variation in ephemerality.
 <br/>
 <br/>
 ## Step 5: Association between Key Content Characteristics and Ephemerality while Factoring in User Engagement _(to determine if user engagement is a confounding variable)_
@@ -72,7 +72,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Script:** step5.02.Rmd
 <br/>
 <br/>
-**Description:** To evaluate whether user engagement confounded the relationship between content characteristics and ephemerality, we conducted a stepwise logistic regression that included both sets of predictors. We entered content characteristics that we found to be significantly associated with ephemerality in previous analyses into the stepwise logistic regression model alongside four user engagement metrics: views, likes, comments, and shares. Using Akaike Information Criterion (AIC), the stepwise procedure iteratively selected the combination of predictors that best explained the outcome while minimizing model complexity. This approach allowed us to assess whether the associations between content characteristics and ephemerality persisted after adjusting for user engagement levels.
+**Description:** To evaluate whether user engagement confounded the relationship between content characteristics and ephemerality, a stepwise logistic regression that included both sets of predictors was conducted. I entered content characteristics that I found to be significantly associated with ephemerality in previous analyses into the stepwise logistic regression model alongside four user engagement metrics: views, likes, comments, and shares. Using Akaike Information Criterion (AIC), the stepwise procedure iteratively selected the combination of predictors that best explained the outcome while minimizing model complexity. This approach allowed me to assess whether the associations between content characteristics and ephemerality persisted after adjusting for user engagement levels.
 
 
 ## Step 6: Association between Interactions of Content Characteristics and Ephemerality _(to determine if content characteristics operate independently or synergistically)_
@@ -84,7 +84,7 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 **Script:** step6.02.Rmd 
 <br/>
 <br/>
-**Description:** To assess whether content characteristics operated independently or synergistically in predicting ephemerality, a stepwise logistic regression was conducted that included all two-way interactions between seven key (child) content codes identified in earlier models. The model began with all main effects and interaction terms and used Akaike Information Criterion (AIC) to iteratively remove non-contributing variables. This approach allowed for the identification of not only direct associations but also whether specific combinations of content features increased or decreased the probability of a video becoming ephemeral.
+**Description:** To assess whether content characteristics operated independently or synergistically in predicting ephemerality, a stepwise logistic regression was conducted that included all two-way interactions between five key (child) content codes identified in earlier models. The model began with all main effects and interaction terms and used Akaike Information Criterion (AIC) to iteratively remove non-contributing variables. This approach allowed for the identification of not only direct associations but also whether specific combinations of content features increased or decreased the probability of a video becoming ephemeral.
 
 ## Step 7: Association between User Profile Characteristics and Probability of Ephemerality
 _**RQ 1.2.** What user profile characteristics (i.e., total number of videos, total number of likes across videos, total number of followers, total number of accounts followed, and verification status) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
@@ -92,7 +92,7 @@ _**RQ 1.2.** What user profile characteristics (i.e., total number of videos, to
 <br/>
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step7.01.Rmd
+**Script:** step7.02.Rmd
 <br/>
 <br/>
 **Description:** To determine whether user profile characteristics were associated with the probability of ephemerality, a stepwise logistic regression was conducted. Predictor variables included total likes, total video count, follower count, following count, and verification status. Due to skewed distributions, all count-based variables were log-transformed prior to modeling. Verification status was excluded during model selection, and the final model retained four log-transformed user profile predictors.
