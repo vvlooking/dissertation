@@ -69,10 +69,11 @@ _**RQ 1.1** What content characteristics (i.e., a video's user engagement metric
 <br/>
 **Analysis:** Stepwise logistic regression
 <br/>
-**Script:** step5.01.Rmd
+**Script:** step5.02.Rmd
 <br/>
 <br/>
-**Description:** To assess whether user engagement confounded the relationship between content characteristics and video ephemerality, a stepwise logistic regression was conducted using seven content-related predictors alongside four user engagement metrics (i.e., view count, like count, comment count, and share count). The model selection process used Akaike Information Criterion (AIC) to iteratively retain only the predictors that improved model fit, allowing for an assessment of whether the previously observed content-based associations with ephemerality remained significant when user engagement was taken into account.
+**Description:** To evaluate whether user engagement confounded the relationship between content characteristics and ephemerality, we conducted a stepwise logistic regression that included both sets of predictors. We entered content characteristics that we found to be significantly associated with ephemerality in previous analyses into the stepwise logistic regression model alongside four user engagement metrics: views, likes, comments, and shares. Using Akaike Information Criterion (AIC), the stepwise procedure iteratively selected the combination of predictors that best explained the outcome while minimizing model complexity. This approach allowed us to assess whether the associations between content characteristics and ephemerality persisted after adjusting for user engagement levels.
+
 
 ## Step 6: Association between Interactions of Content Characteristics and Probability of Ephemerality _(to determine if content characteristics operate independently or synergistically)_
 _**RQ 1.1** What content characteristics (i.e., a video's user engagement metrics and audio, visual, and linguistic elements) are associated with the ephemerality of nonsuicidal self-injury information on TikTok?_
